@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do-List</title>
+    <link rel="stylesheet" href="/simple.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the To-Do-List</h1>
+    </header>
+    <main>
+        <form action="/task" method="POST">
+            <legend>goal name</legend>
+            <input id="goalname" name="goalname">
+            <br>
+            <br>
+            <legend>goal description</legend>
+            <input id="goaldescription" name="goaldescription">
+            <br>
+            <br>
+            <button>Create Task</button>
+        </form>
+
+        <% if (errors && errors.length) { %>
+            <% errors.forEach(err => { %>
+                <fieldset>
+                    <p><%= err %></p>
+                </fieldset>
+            <% }) %>
+        <% } %>
+
+        <% if (goals && goals.length) { %>
+            <h2>Your goals</h2>
+            <ul>
+                <% goals.forEach((g, i) => { %>
+                    <li>
+                        <fieldset>
+                                <input type="checkbox" id="goal-<%= g._id %>">
+                                <label for="goal-<%= g._id %>"><%= g.goalname %></label>: <%= g.goaldescription %>
+                                <form action="/task/delete" method="POST" style="display:inline">
+                                    <input type="hidden" name="id" value="<%= g._id %>">
+                                    <button type="submit">Delete</button>
+                                </form>
+                        </fieldset>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } %>
+    </main>
+    <footer>
+        <h4>&copy; To-Do-List</h4>
+    </footer>
+</body>
+</html>

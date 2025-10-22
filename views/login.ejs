@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/simple.css">
+</head>
+<body>
+    <header>
+        <h1>login</h1>
+    </header>
+    <main>
+        <form action="/login" method="POST">
+            <% errors.forEach(error => { %>
+                <fieldset>
+                    <p><%= error %></p>
+                </fieldset>
+            <% }) %> 
+            <fieldset>
+                <legend>login</legend>
+                <label for="username"><legend>username</legend></label>
+                <input id="username" name="username" type="text">
+                <br>
+                <br>
+                <label for="password"><legend>password</legend></label>
+                <input id="password" name="password" type="password">
+                <br>
+                <br>
+                <button>Log In!</button>
+            </fieldset>
+        </form>
+    </main>
+    <footer>
+        <h4>website created by Ashar</h4>
+    </footer>
+</body>
+</html>
